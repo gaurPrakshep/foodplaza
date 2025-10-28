@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Restaurant — Menu</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>My Restaurant</h1>
+    <div id="table-indicator" class="table-indicator">Table: —</div>
+  </header>
+
+  <main class="container">
+    <nav class="index">
+      <ul>
+        <li><a href="#starters">Starters</a></li>
+        <li><a href="#mains">Mains</a></li>
+        <li><a href="#desserts">Desserts</a></li>
+        <li><a href="#drinks">Drinks</a></li>
+      </ul>
+    </nav>
+
+    <section class="content">
+      <section id="starters" class="menu-section">
+        <h2>Starters</h2>
+        <div class="menu-item" data-name="Garlic Bread" data-price="120">
+          <div class="item-meta">
+            <h3>Garlic Bread</h3>
+            <p class="price">₹120</p>
+          </div>
+          <p class="desc">Crispy garlic bread topped with herbs.</p>
+        </div>
+
+        <div class="menu-item" data-name="Tomato Soup" data-price="90">
+          <div class="item-meta">
+            <h3>Tomato Soup</h3>
+            <p class="price">₹90</p>
+          </div>
+          <p class="desc">Warm soup with basil and cream.</p>
+        </div>
+      </section>
+
+      <section id="mains" class="menu-section">
+        <h2>Mains</h2>
+        <div class="menu-item" data-name="Margherita Pizza" data-price="320">
+          <div class="item-meta">
+            <h3>Margherita Pizza</h3>
+            <p class="price">₹320</p>
+          </div>
+          <p class="desc">Classic cheese and tomato pizza.</p>
+        </div>
+
+        <div class="menu-item" data-name="Butter Chicken" data-price="350">
+          <div class="item-meta">
+            <h3>Butter Chicken</h3>
+            <p class="price">₹350</p>
+          </div>
+          <p class="desc">Rich tomato gravy with butter and cream.</p>
+        </div>
+      </section>
+
+      <section id="desserts" class="menu-section">
+        <h2>Desserts</h2>
+        <div class="menu-item" data-name="Gulab Jamun" data-price="80">
+          <div class="item-meta">
+            <h3>Gulab Jamun</h3>
+            <p class="price">₹80</p>
+          </div>
+          <p class="desc">Soft milk-based dumplings in syrup.</p>
+        </div>
+      </section>
+
+      <section id="drinks" class="menu-section">
+        <h2>Drinks</h2>
+        <div class="menu-item" data-name="Masala Chai" data-price="40">
+          <div class="item-meta">
+            <h3>Masala Chai</h3>
+            <p class="price">₹40</p>
+          </div>
+          <p class="desc">Spiced tea brewed fresh.</p>
+        </div>
+      </section>
+
+      <div class="whatsapp-row">
+        <button id="whatsapp-order" class="whatsapp-btn">Order via WhatsApp</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
