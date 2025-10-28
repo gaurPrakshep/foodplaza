@@ -1,0 +1,109 @@
+:root{
+  --bg:#fff;
+  --muted:#666;
+  --accent:#2b8a3e;
+  --card:#fafafa;
+  --maxw:1000px;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: Inter, system-ui, Arial, sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:#111;
+  padding:12px;
+  display:flex;
+  justify-content:center;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  width:100%;
+  max-width:var(--maxw);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 14px;
+  background:linear-gradient(0deg, rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+  border-bottom:1px solid #eee;
+}
+
+.container{
+  display:flex;
+  gap:18px;
+  width:100%;
+  max-width:var(--maxw);
+  margin-top:12px;
+}
+
+.index{
+  width:180px;
+  flex:0 0 180px;
+  position:sticky;
+  top:64px;
+  height:calc(100vh - 90px);
+  overflow:auto;
+  background:var(--card);
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #eee;
+}
+
+.index ul{list-style:none;padding:0;margin:0}
+.index li{margin:8px 0}
+.index a{color:var(--accent); text-decoration:none; font-weight:600}
+
+.content{
+  flex:1;
+  min-width:0;
+}
+
+.menu-section{
+  margin-bottom:22px;
+  padding:14px;
+  background:var(--card);
+  border-radius:10px;
+  border:1px solid #f0f0f0;
+}
+
+.menu-item{
+  padding:10px;
+  border-bottom:1px dashed #eee;
+  cursor:default;
+}
+
+.menu-item:last-child{border-bottom:none}
+.item-meta{display:flex;justify-content:space-between;align-items:center}
+.price{font-weight:700;color:var(--muted)}
+
+.whatsapp-row{
+  position:sticky;
+  bottom:12px;
+  display:flex;
+  justify-content:flex-end;
+  margin-top:14px;
+}
+
+.whatsapp-btn{
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(43,138,62,0.12);
+}
+
+.table-indicator{
+  font-weight:700;
+  color:var(--muted);
+}
+@media (max-width:800px){
+  .container{flex-direction:column}
+  .index{width:100%; flex:unset; height:auto; position:static}
+  .whatsapp-row{justify-content:center}
+}
