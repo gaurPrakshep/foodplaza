@@ -216,6 +216,10 @@ document.querySelectorAll(".menu-index a").forEach(a => {
 
 // Initialize on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
+  // 🧹 Clear cart whenever page is loaded (new QR scan)
+  cart = [];
+  saveCart();
+  
   initAddButtons();
   renderCart();
 });
