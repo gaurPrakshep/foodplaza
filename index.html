@@ -3,135 +3,349 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Restaurant — Menu</title>
-
-  <!-- styles + script (script deferred) -->
+  <title>My Restaurant — Pizza Menu</title>
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header class="topbar" role="banner">
+  <header class="topbar">
     <div class="brand">
-      <h1>My Restaurant</h1>
-      <p class="tag">Fresh. Fast. Friendly.</p>
+      <h1>🍽️ My Restaurant</h1>
+      <p class="tag">Tap sizes, add to order — then checkout via WhatsApp</p>
     </div>
-    <div id="table-indicator" class="table-indicator" aria-live="polite">Table: —</div>
+
+    <div class="cart-area">
+      <button id="cart-btn" aria-haspopup="true" aria-expanded="false">
+        🛒 Your Order (<span id="cart-count">0</span>) • ₹<span id="cart-total">0</span>
+      </button>
+
+      <div id="cart-preview" class="cart-preview" hidden>
+        <h4>Your Order</h4>
+        <ul id="cart-items" class="cart-items"></ul>
+        <div class="cart-actions">
+          <div>Total: ₹<span id="cart-total-2">0</span></div>
+          <button id="checkout-btn" class="primary">Checkout (WhatsApp)</button>
+        </div>
+      </div>
+    </div>
   </header>
 
+  <nav class="menu-index" aria-label="Menu index">
+    <a href="#veg-pizzas">🍕 Veg Pizzas</a>
+    <a href="#chicken-pizzas">🍗 Chicken Pizzas</a>
+    <a href="#special-pizzas">🌟 Special Pizzas</a>
+  </nav>
+
   <main class="container">
-    <nav class="index" aria-label="Menu index">
-      <ul>
-        <li><a href="#starters">Starters</a></li>
-        <li><a href="#mains">Mains</a></li>
-        <li><a href="#sides">Sides</a></li>
-        <li><a href="#desserts">Desserts</a></li>
-        <li><a href="#drinks">Drinks</a></li>
-      </ul>
-    </nav>
 
-    <section class="content" id="menu-content">
-      <!-- Menu sections: each item contains an optional image -->
-      <section id="starters" class="menu-section" tabindex="-1">
-        <h2>Starters</h2>
+    <!-- VEG PIZZAS -->
+    <section id="veg-pizzas" class="menu-section">
+      <h2>🍕 Veg Pizzas</h2>
 
-        <article class="menu-item" data-name="Garlic Bread" data-price="120">
-          <img src="https://picsum.photos/seed/garlic/360/240" alt="Garlic Bread" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>Garlic Bread</h3>
-              <p class="price">₹120</p>
-            </div>
-            <p class="desc">Crispy garlic bread topped with herbs and parmesan.</p>
-          </div>
-        </article>
+      <!-- Olive Corn -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Olive Corn Pizza</h3>
+          <p class="item-desc">(Corn, Olives, Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="80" data-size="S">Small - ₹80</option>
+            <option value="110" data-size="M">Medium - ₹110</option>
+            <option value="150" data-size="L">Large - ₹150</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1" title="Quantity">
+          <button class="add-btn" data-name="Olive Corn Pizza">Select</button>
+        </div>
+      </div>
 
-        <article class="menu-item" data-name="Tomato Soup" data-price="90">
-          <img src="https://picsum.photos/seed/soup/360/240" alt="Tomato Soup" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>Tomato Soup</h3>
-              <p class="price">₹90</p>
-            </div>
-            <p class="desc">Warm tomato soup with basil and cream.</p>
-          </div>
-        </article>
-      </section>
+      <!-- Veg Supreme -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Veg Supreme Pizza</h3>
+          <p class="item-desc">Assorted vegetables and cheese</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="80" data-size="S">Small - ₹80</option>
+            <option value="110" data-size="M">Medium - ₹110</option>
+            <option value="150" data-size="L">Large - ₹150</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Veg Supreme Pizza">Select</button>
+        </div>
+      </div>
 
-      <section id="mains" class="menu-section" tabindex="-1">
-        <h2>Mains</h2>
-        <article class="menu-item" data-name="Margherita Pizza" data-price="320">
-          <img src="https://picsum.photos/seed/pizza/360/240" alt="Margherita Pizza" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>Margherita Pizza</h3>
-              <p class="price">₹320</p>
-            </div>
-            <p class="desc">Classic cheese & tomato pizza, wood-fired crust.</p>
-          </div>
-        </article>
+      <!-- Double Cheese -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Double Cheese Pizza</h3>
+          <p class="item-desc">(Capsicum, Onion, Double Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="120" data-size="S">Small - ₹120</option>
+            <option value="160" data-size="M">Medium - ₹160</option>
+            <option value="200" data-size="L">Large - ₹200</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Double Cheese Pizza">Select</button>
+        </div>
+      </div>
 
-        <article class="menu-item" data-name="Butter Chicken" data-price="350">
-          <img src="https://picsum.photos/seed/butterchicken/360/240" alt="Butter Chicken" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>Butter Chicken</h3>
-              <p class="price">₹350</p>
-            </div>
-            <p class="desc">Rich tomato gravy with butter and cream, served with rice or naan.</p>
-          </div>
-        </article>
-      </section>
+      <!-- Margherita -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Margherita Pizza</h3>
+          <p class="item-desc">(Classic cheese & tomato)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="100" data-size="S">Small - ₹100</option>
+            <option value="140" data-size="M">Medium - ₹140</option>
+            <option value="190" data-size="L">Large - ₹190</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Margherita Pizza">Select</button>
+        </div>
+      </div>
 
-      <section id="sides" class="menu-section" tabindex="-1">
-        <h2>Sides</h2>
-        <article class="menu-item" data-name="French Fries" data-price="110">
-          <img src="https://picsum.photos/seed/fries/360/240" alt="French Fries" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>French Fries</h3>
-              <p class="price">₹110</p>
-            </div>
-            <p class="desc">Crispy salted fries served with ketchup.</p>
-          </div>
-        </article>
-      </section>
+      <!-- Baby Corn -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Baby Corn Pizza</h3>
+          <p class="item-desc">(Capsicum, Onion, Baby Corn, Olives, Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="120" data-size="S">Small - ₹120</option>
+            <option value="160" data-size="M">Medium - ₹160</option>
+            <option value="200" data-size="L">Large - ₹200</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Baby Corn Pizza">Select</button>
+        </div>
+      </div>
 
-      <section id="desserts" class="menu-section" tabindex="-1">
-        <h2>Desserts</h2>
-        <article class="menu-item" data-name="Gulab Jamun" data-price="80">
-          <img src="https://picsum.photos/seed/gulab/360/240" alt="Gulab Jamun" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>Gulab Jamun</h3>
-              <p class="price">₹80</p>
-            </div>
-            <p class="desc">Soft milk dumplings soaked in rose syrup.</p>
-          </div>
-        </article>
-      </section>
+      <!-- Paneer Tandoori -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Paneer Tandoori Pizza</h3>
+          <p class="item-desc">(Paneer, Jalapeno, Capsicum, Onion)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="150" data-size="S">Small - ₹150</option>
+            <option value="190" data-size="M">Medium - ₹190</option>
+            <option value="220" data-size="L">Large - ₹220</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Paneer Tandoori Pizza">Select</button>
+        </div>
+      </div>
 
-      <section id="drinks" class="menu-section" tabindex="-1">
-        <h2>Drinks</h2>
-        <article class="menu-item" data-name="Masala Chai" data-price="40">
-          <img src="https://picsum.photos/seed/tea/360/240" alt="Masala Chai" loading="lazy">
-          <div class="item-body">
-            <div class="item-meta">
-              <h3>Masala Chai</h3>
-              <p class="price">₹40</p>
-            </div>
-            <p class="desc">Freshly brewed spiced tea.</p>
-          </div>
-        </article>
-      </section>
+      <!-- Paneer Makini -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Paneer Makini Pizza</h3>
+          <p class="item-desc">(Paneer, Capsicum, Onion, Makini Tadka, Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="170" data-size="S">Small - ₹170</option>
+            <option value="220" data-size="M">Medium - ₹220</option>
+            <option value="260" data-size="L">Large - ₹260</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Paneer Makini Pizza">Select</button>
+        </div>
+      </div>
 
-      <div class="whatsapp-row">
-        <button id="whatsapp-order" class="whatsapp-btn" aria-label="Order via WhatsApp">Order via WhatsApp</button>
+      <!-- Paneer Peri Peri -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Paneer Peri Peri Pizza</h3>
+          <p class="item-desc">(Paneer, Jalapeno, Capsicum, Onion, Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="200" data-size="S">Small - ₹200</option>
+            <option value="240" data-size="M">Medium - ₹240</option>
+            <option value="300" data-size="L">Large - ₹300</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Paneer Peri Peri Pizza">Select</button>
+        </div>
+      </div>
+
+      <!-- Farm House -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Farm House</h3>
+          <p class="item-desc">(Pineapple, Corn, Mushroom, Paneer, Olives, Jalapeno, Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="220" data-size="S">Small - ₹220</option>
+            <option value="260" data-size="M">Medium - ₹260</option>
+            <option value="320" data-size="L">Large - ₹320</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Farm House">Select</button>
+        </div>
       </div>
     </section>
+
+    <!-- CHICKEN PIZZAS -->
+    <section id="chicken-pizzas" class="menu-section">
+      <h2>🍗 Chicken Pizzas</h2>
+
+      <!-- Chicken Tandoori -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Chicken Tandoori</h3>
+          <p class="item-desc">(Chicken Cube, Red & Yellow Capsicum, Mozzarella)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="150" data-size="S">Small - ₹150</option>
+            <option value="200" data-size="M">Medium - ₹200</option>
+            <option value="280" data-size="L">Large - ₹280</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Chicken Tandoori">Select</button>
+        </div>
+      </div>
+
+      <!-- Chicken Tikka -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Chicken Tikka</h3>
+          <p class="item-desc">(Chicken Tikka Cubes, Red & Yellow Capsicum)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="170" data-size="S">Small - ₹170</option>
+            <option value="220" data-size="M">Medium - ₹220</option>
+            <option value="300" data-size="L">Large - ₹300</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Chicken Tikka">Select</button>
+        </div>
+      </div>
+
+      <!-- Chicken Makini -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Chicken Makini Pizza</h3>
+          <p class="item-desc">(Chicken, Makini Tadka, Olive, Jalapeno, Cheese)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="200" data-size="S">Small - ₹200</option>
+            <option value="280" data-size="M">Medium - ₹280</option>
+            <option value="350" data-size="L">Large - ₹350</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Chicken Makini Pizza">Select</button>
+        </div>
+      </div>
+
+      <!-- Chicken Peri Peri -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Chicken Peri Peri Pizza</h3>
+          <p class="item-desc">(Chicken, Peri Peri Sauce, Onion, Capsicum, Olive, Jalapeno)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="250" data-size="S">Small - ₹250</option>
+            <option value="320" data-size="M">Medium - ₹320</option>
+            <option value="400" data-size="L">Large - ₹400</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Chicken Peri Peri">Select</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIAL PIZZAS -->
+    <section id="special-pizzas" class="menu-section">
+      <h2>🌟 Special Pizzas</h2>
+
+      <!-- Chocolate -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Chocolate Pizza</h3>
+          <p class="item-desc">(Chocolate paste, Brownie cubes, Cheese, Chocolate syrup)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="200" data-size="S">Small - ₹200</option>
+            <option value="280" data-size="M">Medium - ₹280</option>
+            <option value="350" data-size="L">Large - ₹350</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Chocolate Pizza">Select</button>
+        </div>
+      </div>
+
+      <!-- Pizza Point Special -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Pizza Point Special Pizza</h3>
+          <p class="item-desc">(Loaded Chicken, Paneer, Cheese, Jalapeno, Paprika, Olives)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="220" data-size="S">Small - ₹220</option>
+            <option value="300" data-size="M">Medium - ₹300</option>
+            <option value="400" data-size="L">Large - ₹400</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Pizza Point Special Pizza">Select</button>
+        </div>
+      </div>
+
+      <!-- Bahubali -->
+      <div class="menu-item">
+        <div class="item-left">
+          <h3 class="item-name">Bahubali Pizza</h3>
+          <p class="item-desc">(Chicken Lollipop, Chicken Kabab, Chicken Cubes, Loaded Cheese, Onion, Capsicum, Jalapeno, Olives)</p>
+        </div>
+        <div class="item-right">
+          <select class="size-select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="260" data-size="S">Small - ₹260</option>
+            <option value="340" data-size="M">Medium - ₹340</option>
+            <option value="440" data-size="L">Large - ₹440</option>
+          </select>
+          <input class="qty-input" type="number" min="1" value="1">
+          <button class="add-btn" data-name="Bahubali Pizza">Select</button>
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
   <footer class="footer">
-    <small>Open with link: <code>?table=5</code> — test table detection</small>
+    Tip: Open this menu with `?table=5` to include table number automatically in orders.
   </footer>
 </body>
 </html>
